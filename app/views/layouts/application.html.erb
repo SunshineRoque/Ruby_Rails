@@ -1,16 +1,34 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>App</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>App</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-  </head>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+</head>
+<header>
+  <nav id="navbar">
+    <div class="container">
+      <ul>
+        <li>
+          <%= link_to 'Home', root_path %>
+        </li>
+        <li>
+          <%= link_to 'About', about_path %>
+        </li>
+        <li>
+          <%= link_to 'Contact', contact_path %>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+<%= yield %>
+</body>
+
 </html>
