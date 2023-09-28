@@ -1,0 +1,63 @@
+
+<style>
+    table, thead, td {
+        border: 1px solid;
+    }
+
+    td {
+        padding: 10px;
+    }
+
+    thead {
+        text-align: center;
+    }
+
+
+    table {
+        margin: auto;
+        width: 70vh;
+        height: 50vh;
+    }
+</style>
+
+
+
+
+<div class="box">
+
+  <div id="posts" class="d-flex flex-column">
+    <h1>Post List</h1>
+
+    <table>
+      <thead>
+      <td>Title</td>
+      <td>Content</td>
+      <td>Action</td>
+      </thead>
+      <% @posts.each do |post| %>
+        <tr>
+          <td><%= post.title %></td>
+          <td><%= post.content %></td>
+          <td></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

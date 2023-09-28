@@ -1,0 +1,17 @@
+<div class="container-all">
+  <div class="box-1">
+    <h1 class="con">
+      <%=
+        if controller_name == 'posts'
+          "Post Page"
+        elsif action_name == 'about' && controller_name == 'welcome'
+          "About Us!"
+        elsif action_name == 'index' && controller_name == 'welcome'
+          "Welcome to our Website!"
+        elsif action_name == 'contact' && controller_name == 'welcome'
+          "Contact Us!"
+        end
+      %>
+    </h1>
+  </div>
+</div>

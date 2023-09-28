@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
   <title>App</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -8,27 +8,231 @@
 
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+
+
+  <style>
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+      }
+
+
+      body {
+          background: #E4B8EF;
+      }
+
+      /*button*/
+
+      .btn {
+          display: inline-block;
+          font-size: 18px;
+          color: #fff;
+          background: #333;
+          padding: 13px 20px;
+          border: none;
+          cursor: pointer;
+      }
+
+      .btn:hover {
+          background: #f7c08a;
+          color: #333;
+
+      }
+
+
+      /*Navbar*/
+      #navbar {
+          background: url("https://png.pngtree.com/background/20210717/original/pngtree-aesthetic-violet-gold-marble-phone-wallpaper-picture-image_1412973.jpg");
+          background-size: cover;
+          overflow: auto;
+      }
+
+      #navbar h1 {
+          float: left;
+          padding-top: 20px;
+      }
+
+      #navbar ul {
+          list-style: none;
+          float: right;
+      }
+
+      #navbar ul li {
+          float: left;
+      }
+
+      #navbar ul li a {
+          display: block;
+          padding: 20px;
+          text-align: center;
+      }
+
+      #navbar ul li a:hover,
+      #navbar ul li a.current {
+          background: linear-gradient(purple, mediumpurple, violet);
+          color: #f7c08a;
+      }
+
+      h1 {
+          margin-bottom: 20px;
+      }
+
+      /* style 3 - contact */
+
+      /* h1 {
+        margin: auto;
+    } */
+
+      h2 {
+          opacity: 35%;
+      }
+
+      .active {
+          color: blueviolet;
+      }
+
+      ul {
+          text-decoration: none;
+          list-style: none;
+      }
+
+      #posts {
+          border: 2px red solid;
+      }
+
+      /*
+      style 3 -contact
+      .box {
+          background: violet;
+          align-items: center;
+          justify-content: center;
+          height: 85vh;
+          display: flex;
+          flex-direction: column;
+      } */
+
+      .box {
+          background: violet;
+          align-items: center;
+          justify-content: center;
+          height: 80vh;
+          display: flex;
+          flex-direction: column;
+
+      }
+
+      .con {
+          text-align: center;
+          margin-top: 130px;
+      }
+
+      p {
+          text-align: justify;
+          margin: auto;
+          padding: 50px;
+      }
+
+      .container-all {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          background: linear-gradient(#df8bbc, #ad77c3);
+          height: 10vh;
+          width: 60vh;
+          margin: auto;
+      }
+
+
+      /* also have about-us-container */
+
+      .box-1 {
+          margin-top: -100px;
+      }
+
+      /* also have box-1 */
+
+
+      .image {
+          display: flex;
+          margin-bottom: 0;
+      }
+
+
+      /*Contact Us*/
+
+      #contact-form .form-group {
+          margin-bottom: 20px;
+      }
+
+      #contact-form label {
+          display: block;
+          margin-bottom: 5px;
+      }
+
+      #contact-form input,
+      #contact-form textarea {
+          width: 100%;
+          padding: 10px;
+          border: 1px #ddd solid;
+      }
+
+      #contact-form textarea {
+          height: 200px;
+      }
+
+      #contact-form input,
+      #contact-form textarea:focus {
+          outline: none;
+          border-color: #f7c08a;
+      }
+
+  </style>
 </head>
+
+
+<body>
+
 <header>
   <nav id="navbar">
+
     <div class="container">
+
+      <%= yield %>
+
       <ul>
         <li>
-          <%= link_to 'Home', root_path %>
+          <%= link_to 'Home', root_path, class: "nav-link #{'active' if action_name == 'index' }", 'aria-current': 'page' %>
         </li>
         <li>
-          <%= link_to 'About', about_path %>
+          <%= link_to 'About', about_path, class: "nav-link #{'active' if action_name == 'about' }", 'aria-current': 'page' %>
         </li>
         <li>
-          <%= link_to 'Contact', contact_path %>
+          <%= link_to 'Contact', contact_path, class: "nav-link #{'active' if action_name == 'contact' }", 'aria-current': 'page' %>
+        </li>
+        <li>
+          <%= link_to 'Posts', posts_path, class: "nav-link #{'active' if action_name == 'posts' }", 'aria-current': 'page' %>
         </li>
       </ul>
     </div>
   </nav>
 </header>
 
-<body>
-<%= yield %>
-</body>
+<%= render 'layouts/header' %>
 
+</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
