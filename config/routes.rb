@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   get :contact, to: 'welcome#contact'
 
   resources :posts
+  resources :feedbacks, only: [:new, :create]
 end

@@ -27,16 +27,18 @@
       .btn {
           display: inline-block;
           font-size: 18px;
-          color: #fff;
-          background: #333;
+          color: black;
+          background: linear-gradient(purple, violet);;
           padding: 13px 20px;
-          border: none;
           cursor: pointer;
+          margin: 5px;
+          width: 150px;
+          border: none;
       }
 
       .btn:hover {
-          background: #f7c08a;
-          color: #333;
+          background: transparent;
+          color: black;
 
       }
 
@@ -188,16 +190,46 @@
           border-color: #f7c08a;
       }
 
+      /*    Posts List*/
+      table, thead, td {
+          border: 1px solid;
+      }
+
+      td {
+          padding: 10px;
+      }
+
+      thead {
+          text-align: center;
+      }
+
+
+      table {
+          margin: auto;
+          width: 70vh;
+          height: 50vh;
+      }
+
+
   </style>
 </head>
 
 
 <body>
 
+<% if flash[:notice] %>
+  <p class="notice"><%= notice %></p>
+<% end %>
+<% if flash[:alert] %>
+  <p class="alert"><%= alert %></p>
+<% end %>
+
+
 <header>
   <nav id="navbar">
 
     <div class="container">
+
 
       <%= yield %>
 

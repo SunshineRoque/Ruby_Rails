@@ -2,7 +2,7 @@
   <div class="box-1">
     <h1 class="con">
       <%=
-        if controller_name == 'posts'
+        if action_name == 'index' && controller_name == 'posts'
           "Post Page"
         elsif action_name == 'about' && controller_name == 'welcome'
           "About Us!"
@@ -10,6 +10,8 @@
           "Welcome to our Website!"
         elsif action_name == 'contact' && controller_name == 'welcome'
           "Contact Us!"
+        elsif action_name == 'new' && controller_name == 'posts'
+          "New Post!"
         end
       %>
     </h1>
