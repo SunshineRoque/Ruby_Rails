@@ -3,20 +3,33 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posts = Post.all
-    @posts = @posts.where('title LIKE ?', "%#{params[:title]}%")
+    @posts = Post.order(created_at: :desc)
+    @posts = @posts.where(title: params[:title]) if params[:title].present?
     if params[:start_date].present? && params[:end_date].present?
-      @posts = @posts.where(created_at: params[:start_date]..params[:end_date])
+      start_date = Date.parse(params[:start_date])
+      end_date = Date.parse(params[:end_date])
+      @posts = @posts.where(created_at: start_date..end_date)
     end
-    @posts = @posts.order(created_at: :desc)
+    if params[:published].present?
+      @posts = @posts.where(published: '1' == params[:published])
+    end
   end
 
   def new
     @post = Post.new
   end
 
+
   def create
     @post = Post.new(post_params)
+
+    # puts params[:post]
+    # if params[:post][:published] == '1'
+    #   @post.published = true
+    # else
+    #   @post.published = false
+    # end
+
     if @post.save
       flash[:notice] = 'Post created successfully'
       redirect_to posts_path
@@ -24,6 +37,7 @@ class PostsController < ApplicationController
       flash.now[:alert] = 'Post create failed'
       render :new, status: :unprocessable_entity
     end
+
   end
 
   def show
@@ -45,8 +59,10 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     flash[:notice] = 'Post deleted successfully'
-    redirect_to posts_path
+    redirect_to
   end
+
+
 
   private
 
@@ -55,7 +71,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content)
+    params.require(:post).permit(:title, :content, :published)
   end
 
 end

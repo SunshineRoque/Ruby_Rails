@@ -2,7 +2,7 @@
   <% if post.errors.any? %>
     <ul>
       <% post.errors.each do |error| %>
-        <li><%= error.full_message %></li>
+          <li><%= error.full_message %></li>
       <% end %>
     </ul>
   <% end %>
@@ -14,5 +14,19 @@
     <%= form.label :content %>
     <%= form.text_field :content %>
   </div>
+
+  <div class="field">
+    <%= form.label 'Published' %>
+    <%= form.check_box :published %>
+  </div>
+
+
   <%= form.submit %>
 <% end %>
+
+
+
+
+
+
+
