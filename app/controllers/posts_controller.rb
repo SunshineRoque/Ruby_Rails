@@ -4,6 +4,11 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @posts = @posts.where('title LIKE ?', "%#{params[:title]}%")
+    if params[:start_date].present? && params[:end_date].present?
+      @posts = @posts.where(created_at: params[:start_date]..params[:end_date])
+    end
+    @posts = @posts.order(created_at: :desc)
   end
 
   def new
@@ -11,7 +16,6 @@ class PostsController < ApplicationController
   end
 
   def create
-
     @post = Post.new(post_params)
     if @post.save
       flash[:notice] = 'Post created successfully'

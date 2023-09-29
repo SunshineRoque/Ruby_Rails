@@ -1,34 +1,31 @@
-<style>
-    .table-container {
-        height: 500px;
-        width: 1000px;
-        max-width: 100%;
-        border: 1px solid #ccc;
-        overflow: auto;
-        box-sizing: border-box;
-    }
 
-    h3 {
-        text-align: left;
-        font-size: 50px;
-        font-family: "Helvetica Neue", Helvetica, Arial;
-    }
-
-    .add-new-post{
-        margin: 5px;
-        width: 95% ;
-    }
-
-
-
-</style>
 
 <h3>Post List</h3>
-<div class="box">
+<div class="add-new-post">
+  <%= link_to 'Add New Post', new_post_path, class: 'btn btn-success' %>
+</div>
 
-  <div class="add-new-post">
-    <%= link_to 'Add New Post', new_post_path, class: 'btn btn-success' %>
+<div class="box-posts">
+
+  <div class="container">
+    <%= form_with url: posts_path, method: :get do |form| %>
+      <div class="mb-3">
+        <%= form.label :title, class: 'form-label' %>
+        <%= form.text_field :title, value: params[:title], class: 'form-control' %>
+      </div>
+      <div class="mb-3">
+        <%= form.label :start_date, class: 'form-label' %>
+        <%= form.date_field :start_date, value: params[:start_date], class: 'form-control' %>
+      </div>
+      <div class="mb-3">
+        <%= form.label :end_date, class: 'form-label' %>
+        <%= form.date_field :end_date, value: params[:end_date], class: 'form-control' %>
+      </div>
+      <%= form.submit 'Search', class: 'btn btn-sm btn-primary' %>
+    <% end %>
   </div>
+
+
   <div id="posts" class="d-flex flex-column">
 
     <div class="table-container">
