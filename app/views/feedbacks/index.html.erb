@@ -1,6 +1,5 @@
 <h3>Feedbacks</h3>
 
-
 <div class="box-feedback">
 
   <div class="container">
@@ -21,6 +20,17 @@
         <%= form.label :message, class: 'form-label' %>
         <%= form.text_field :message, value: params[:message], class: 'form-control' %>
       </div>
+      <div class="form-group">
+        <strong>Remarks:</strong>
+        <br>
+        <% Feedback.remarks.each do |remark| %>
+          <div class="form-check">
+            <%= form.radio_button :remarks, remark[0], class: 'form-check-input',
+                                  checked: (params[:remarks] == remark[0]) %>
+            <%= form.label "#{remark[0]}", class: 'form-check-label' %>
+          </div>
+        <% end %>
+      </div>
       <div class="mb-3">
         <%= form.label :start_date, class: 'form-label' %>
         <%= form.date_field :start_date, value: params[:start_date], class: 'form-control' %>
@@ -29,7 +39,12 @@
         <%= form.label :end_date, class: 'form-label' %>
         <%= form.date_field :end_date, value: params[:end_date], class: 'form-control' %>
       </div>
-      <%= form.submit 'Search', class: 'btn btn-sm btn-primary' %>
+      <div class="letter1">
+        <%= form.submit 'Search', class: 'btn btn-sm btn-primary' %>
+        <div class="add-new-feedback">
+          <%= link_to 'Add New Feedback', new_feedback_path, class: 'btn btn-success' %>
+        </div>
+      </div>
     <% end %>
   </div>
 
@@ -44,6 +59,7 @@
           <td>Email</td>
           <td>Subject</td>
           <td>Message</td>
+          <td>Remarks</td>
           <td>Created at</td>
           <td>Updated at</td>
           <td>Action</td>
@@ -55,6 +71,7 @@
             <td><%= post.email %></td>
             <td><%= post.subjetc %></td>
             <td><%= post.message %></td>
+            <td><%= post.remarks %></td>
             <td><%= post.created_at %></td>
             <td><%= post.updated_at %></td>
             <td class="button">

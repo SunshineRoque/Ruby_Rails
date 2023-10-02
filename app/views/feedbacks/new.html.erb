@@ -1,5 +1,5 @@
 <%= form_with model: @feedback, url: feedbacks_path do |form| %>
-  <div class="box ">
+  <div class="box-contact-form">
     <section id="contact-form" class="py-3">
       <h1>Want to connect with us?</h1>
       <div class="container">
@@ -25,10 +25,25 @@
             <%= form.text_area :message %>
           </div>
 
-
-          <div class="actions">
-            <%= form.submit "Submit Feedback" %>
+          <div class="form-group">
+            <strong>Remarks:</strong>
+            <br>
+            <% Feedback.remarks.each do |remark| %>
+              <div class="form-check">
+                <%= form.radio_button :remarks, remark[0], class: 'form-check-input' %>
+                <%= form.label "#{remark[0]}", class: 'form-check-label' %>
+              </div>
+            <% end %>
           </div>
+
+
+          <div class="letter2">
+            <div class="actions ">
+              <%= form.submit "Submit Feedback", class: 'btn-5 btn-success' %>
+              <%= link_to 'See Feedbacks', feedbacks_path, class: 'btn-5 btn-success' %>
+            </div>
+          </div>
+
 
         </form>
 

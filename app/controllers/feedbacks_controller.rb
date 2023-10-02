@@ -12,6 +12,7 @@ class FeedbacksController < ApplicationController
       end_date = Date.parse(params[:end_date])
       @feedbacks = @feedbacks.where(created_at: start_date..end_date)
     end
+    @feedbacks = @feedbacks.where(remarks: params[:remarks]) if params[:remarks].present?
   end
 
   def new
@@ -61,7 +62,7 @@ class FeedbacksController < ApplicationController
   end
 
   def feedback_params
-    params.require(:feedback).permit(:name, :email, :subjetc, :message)
+    params.require(:feedback).permit(:name, :email, :subjetc, :message, :remarks)
   end
 end
 

@@ -1,10 +1,3 @@
-<style>
-    .error {
-        display: flex;
-        flex-direction: column;
-    }
-</style>
-
 <div class="box">
   <h1>Edit Feedbacks: <%= @feedback.id %></h1>
   <%= form_with model: @feedback do |form| %>
@@ -33,6 +26,19 @@
       <%= form.label :message %>
       <%= form.text_area :message %>
     </div>
+
+
+    <div class="form-group">
+      <strong>Remarks:</strong>
+      <br>
+      <% Feedback.remarks.each do |remark| %>
+        <div class="form-check">
+          <%= form.radio_button :remarks, remark[0], class: 'form-check-input' %>
+          <%= form.label "#{remark[0]}", class: 'form-check-label' %>
+        </div>
+      <% end %>
+    </div>
+
 
 
     <%= form.submit %>
