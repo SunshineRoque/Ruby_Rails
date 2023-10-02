@@ -11,4 +11,6 @@ class Feedback < ApplicationRecord
     Neutral: 2,
     Unmarked: 0
   }
+
+  has_many :notes
 end
