@@ -22,7 +22,6 @@
           background: #E4B8EF;
       }
 
-      /*button*/
 
       .btn {
           display: inline-block;
@@ -43,7 +42,6 @@
       }
 
 
-      /*Navbar*/
       #navbar {
           background: url("https://png.pngtree.com/background/20210717/original/pngtree-aesthetic-violet-gold-marble-phone-wallpaper-picture-image_1412973.jpg");
           background-size: cover;
@@ -80,11 +78,6 @@
           margin-bottom: 20px;
       }
 
-      /* style 3 - contact */
-
-      /* h1 {
-        margin: auto;
-    } */
 
       h2 {
           opacity: 35%;
@@ -124,6 +117,23 @@
 
       }
 
+      .box-feedback {
+          background: violet;
+          align-items: center;
+          justify-content: center;
+          height: 120vh;
+          display: flex;
+          flex-direction: column;
+      }
+
+      .box-feedback .table-container {
+          height: 500px;
+          width: 1300px;
+          max-width: 100%;
+          border: 1px solid #ccc;
+          overflow: auto;
+          box-sizing: border-box;
+      }
 
       .con {
           text-align: center;
@@ -148,13 +158,9 @@
       }
 
 
-      /* also have about-us-container */
-
       .box-1 {
           margin-top: -100px;
       }
-
-      /* also have box-1 */
 
 
       .image {
@@ -162,8 +168,6 @@
           margin-bottom: 0;
       }
 
-
-      /*Contact Us*/
 
       #contact-form .form-group {
           margin-bottom: 20px;
@@ -191,7 +195,6 @@
           border-color: #f7c08a;
       }
 
-      /*    Posts List*/
       table, thead, td {
           border: 1px solid;
       }
@@ -256,7 +259,7 @@
           <%= link_to 'About', about_path, class: "nav-link #{'active' if action_name == 'about' }", 'aria-current': 'page' %>
         </li>
         <li>
-          <%= link_to 'Contact', contact_path, class: "nav-link #{'active' if action_name == 'contact' }", 'aria-current': 'page' %>
+          <%= link_to 'Contact', new_feedback_path, class: "nav-link #{'active' if action_name == 'contact' }", 'aria-current': 'page' %>
         </li>
         <li>
           <%= link_to 'Posts', posts_path, class: "nav-link #{'active' if action_name == 'posts' }", 'aria-current': 'page' %>

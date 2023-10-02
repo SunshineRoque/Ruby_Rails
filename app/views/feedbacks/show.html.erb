@@ -1,0 +1,25 @@
+<style>
+    .box ul {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .box ul li {
+        margin: auto 30px;
+    }
+</style>
+
+<div class="box">
+  <h1>show post id: <%= @feedback.id %></h1>
+  <ul>
+
+    <li>Name: <%= @feedback.name %></li>
+
+    <li>Email: <%= @feedback.email %></li>
+
+    <li>Subject: <%= @feedback.subjetc %></li>
+
+    <li>Message: <%= @feedback.message %></li>
+
+  </ul>
+</div>

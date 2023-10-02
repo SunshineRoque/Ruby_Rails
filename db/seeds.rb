@@ -9,3 +9,7 @@
 10.times do |i|
   Post.create(title: "numbered post #{i}", content: "numbered post content #{i}", published: "true")
 end
+
+10.times do |i|
+  Feedback.create(name: "Shira chen #{i}", email: "rubyrails@gmail.com #{i}", subjetc: "Mathematcis #{i}", message: "Hello guys, how are you. Me you  too #{i}")
+end

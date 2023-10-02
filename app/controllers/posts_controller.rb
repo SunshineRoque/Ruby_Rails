@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  # ...
+
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -19,16 +19,8 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
-
   def create
     @post = Post.new(post_params)
-
-    # puts params[:post]
-    # if params[:post][:published] == '1'
-    #   @post.published = true
-    # else
-    #   @post.published = false
-    # end
 
     if @post.save
       flash[:notice] = 'Post created successfully'
@@ -59,10 +51,8 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     flash[:notice] = 'Post deleted successfully'
-    redirect_to
+    redirect_to posts_path
   end
-
-
 
   private
 
