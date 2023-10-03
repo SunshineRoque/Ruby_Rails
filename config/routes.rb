@@ -6,8 +6,12 @@ Rails.application.routes.draw do
   get :about, to: 'welcome#about'
   get :contact, to: 'welcome#contact'
 
-  resources :posts
+  resources :posts do
+    resources :comments, except: :show
+  end
+
   resources :feedbacks
+
   resources :posts do
     member do
       post 'publish'

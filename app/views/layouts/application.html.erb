@@ -215,6 +215,13 @@
           height: 50vh;
       }
 
+      thead {
+          position: sticky;
+          top: 0;
+          background: linear-gradient(violet, purple);
+          z-index: 1;
+      }
+
       .table-container {
           height: 500px;
           width: 1000px;
@@ -297,7 +304,15 @@
 
       }
 
+      .title {
+          display: flex;
+          text-align: left;
+      }
 
+      .column {
+          display: flex;
+          flex-direction: column;
+      }
   </style>
 </head>
 

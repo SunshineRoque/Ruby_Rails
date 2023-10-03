@@ -1,0 +1,46 @@
+<style>
+
+</style>
+
+
+
+<div class="box">
+  <div class="title box">
+    <h1><%= @post.title %></h1>
+    <ul>
+      <li>Content: <%= @post.content %></li>
+      <li>Created at: <%= @post.created_at %></li>
+      <li>Updated at: <%= @post.updated_at %></li>
+    </ul>
+  </div>
+  <div class="table-container">
+    <table>
+      <thead>
+      <tr>
+        <th>Comment</th>
+        <th>Created At</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @comments.each do |comment| %>
+        <tr>
+          <td><%= comment.content %></td>
+          <td><%= comment.created_at.strftime("%B %d, %Y at %I:%M %p") %></td>
+          <td class="button column">
+            <%= link_to 'Edit Comment', edit_post_comment_path(@post, comment), class: 'btn btn-primary' %>
+            <%= button_to 'Delete Comment', post_comment_path(@post, comment), class: 'btn btn-primary', method: :delete %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="button-column">
+    <%= link_to 'Edit Post', edit_post_path(@post), class: 'btn btn-warning' %>
+    <%= link_to 'Post List', posts_path, class: 'btn btn-warning' %>
+    <%= link_to 'New Comment', new_post_comment_path, class: 'btn btn-warning' %>
+  </div>
+</div>
+
+
