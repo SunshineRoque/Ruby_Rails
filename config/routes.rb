@@ -10,11 +10,16 @@ Rails.application.routes.draw do
     resources :comments, except: :show
   end
 
-  resources :feedbacks
-
   resources :posts do
     member do
       post 'publish'
     end
   end
+
+  resources :feedbacks
+
+  resources :feedbacks do
+    resources :notes, except: :show
+  end
+
 end

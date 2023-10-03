@@ -1,0 +1,5 @@
+<div class="box">
+  <h1><%= @feedback.name %></h1>
+  <h2>Edit Note ID: <%= @note.id %></h2>
+  <%= render partial: 'form', locals: { feedback: @feedback, note: @note, path: feedback_note_path(@feedback, @note) } %>
+</div>

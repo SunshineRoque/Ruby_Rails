@@ -78,6 +78,8 @@
               <%= link_to 'Show', feedback_path(post), class: 'btn btn-primary' %>
               <%= link_to 'Edit', edit_feedback_path(post), class: 'btn btn-warning' %>
               <%= button_to 'Delete', feedback_path(post), method: :delete, class: 'btn btn-danger' %>
+              <%= link_to 'Notes', feedback_notes_path(post), class: 'btn btn-warning' %>
+              <%= link_to 'New Note', new_feedback_note_path(post), class: 'btn btn-warning' %>
             </td>
           </tr>
         <% end %>

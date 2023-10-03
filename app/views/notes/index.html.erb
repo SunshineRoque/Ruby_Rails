@@ -1,0 +1,43 @@
+<div class="box">
+  <div class="title box">
+    <h1><%= @feedback.name %></h1>
+    <ul>
+      <li>Email: <%= @feedback.email %></li>
+      <li>Subject: <%= @feedback.subjetc %></li>
+      <li>Message: <%= @feedback.message %></li>
+      <li>Remarks: <%= @feedback.remarks %></li>
+      <li>Created at: <%= @feedback.created_at %></li>
+      <li>Updated at: <%= @feedback.updated_at %></li>
+    </ul>
+  </div>
+  <div class="table-container">
+    <table>
+      <thead>
+      <tr>
+        <th>Note</th>
+        <th>Created At</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @notes.each do |note| %>
+        <tr>
+          <td><%= note.content %></td>
+          <td><%= note.created_at.strftime("%B %d, %Y at %I:%M %p") %></td>
+          <td>
+            <%= link_to 'Edit Note', edit_feedback_note_path(@feedback, note), class: 'btn btn-primary' %>
+            <%= button_to 'Delete Note', feedback_note_path(@feedback, note), class: 'btn btn-primary', method: :delete %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="button-column">
+    <%= link_to 'Edit Feedback', edit_feedback_path(@feedback), class: 'btn btn-warning' %>
+    <%= link_to 'Feedback List', feedbacks_path, class: 'btn btn-warning' %>
+    <%= link_to 'New Note', new_feedback_note_path, class: 'btn btn-warning' %>
+  </div>
+</div>
+
+
