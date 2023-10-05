@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :posts, only: [:index]
+
   resources :feedbacks
 
   resources :feedbacks do

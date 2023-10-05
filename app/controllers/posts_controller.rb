@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posts = Post.includes(:categories).all
+    @posts = Post.includes(:categories)
     @posts = Post.order(created_at: :desc)
     @posts = @posts.where(title: params[:title]) if params[:title].present?
     if params[:start_date].present? && params[:end_date].present?
@@ -14,6 +14,8 @@ class PostsController < ApplicationController
     if params[:published].present?
       @posts = @posts.where(published: '1' == params[:published])
     end
+
+    @posts = @posts.page(params[:page]).per(10)
   end
 
   def new
@@ -62,7 +64,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :published, category_ids: [])
+    params.require(:post).permit(:title, :content, :published)
   end
 
 end

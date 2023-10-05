@@ -4,6 +4,7 @@ class NotesController < ApplicationController
 
   def index
     @notes = @feedback.notes
+    @notes = @notes.page(params[:page]).per(10)
   end
 
   def new

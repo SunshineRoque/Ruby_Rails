@@ -38,6 +38,7 @@
     <%= link_to 'Feedback List', feedbacks_path, class: 'btn btn-warning' %>
     <%= link_to 'New Note', new_feedback_note_path, class: 'btn btn-warning' %>
   </div>
+  <div class="paginate"><%= paginate @notes %></div>
 </div>
 
 

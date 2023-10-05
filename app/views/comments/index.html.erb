@@ -35,6 +35,7 @@
     <%= link_to 'Post List', posts_path, class: 'btn btn-warning' %>
     <%= link_to 'New Comment', new_post_comment_path, class: 'btn btn-warning' %>
   </div>
+  <div class="paginate"><%= paginate @comments %></div>
 </div>
 
 

@@ -4,6 +4,8 @@ class CommentsController < ApplicationController
 
   def index
     @comments = @post.comments
+    @comments = Comment.order(created_at: :desc)
+    @comments = @comments.page(params[:page]).per(10)
   end
 
   def new

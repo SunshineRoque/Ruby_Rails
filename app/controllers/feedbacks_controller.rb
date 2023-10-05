@@ -13,6 +13,7 @@ class FeedbacksController < ApplicationController
       @feedbacks = @feedbacks.where(created_at: start_date..end_date)
     end
     @feedbacks = @feedbacks.where(remarks: params[:remarks]) if params[:remarks].present?
+    @feedbacks = @feedbacks.page(params[:page]).per(10)
   end
 
   def new
