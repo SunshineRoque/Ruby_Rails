@@ -6,10 +6,34 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-10.times do |i|
-  Post.create(title: "numbered post #{i}", content: "numbered post content #{i}", published: "true")
+
+
+50.times do |i|
+  post = Post.new
+  post.title = Faker::Lorem.sentence
+  post.content = Faker::Lorem.paragraph(sentence_count: 4)
+  post.published = true
+  post.categories << Category.all.sample
+  post.save
+
+  10.times do
+    post.comments.create(content: Faker::Lorem.paragraph(sentence_count: 4))
+    Comment.create(post: post, content: Faker::Lorem.paragraph(sentence_count: 4))
+  end
 end
 
-10.times do |i|
-  Feedback.create(name: "Shira chen #{i}", email: "rubyrails@gmail.com #{i}", subjetc: "Mathematcis #{i}", message: "Hello guys, how are you. Me you  too #{i}")
+50.times do |i|
+  post = Feedback.new
+  post.name = Faker::Lorem.sentence
+  post.email = "#{Faker::Name.first_name.downcase}.#{Faker::Name.last_name.downcase}@gmail.com"
+  post.subjetc = Faker::Lorem.sentence
+  post.message = Faker::Lorem.paragraph(sentence_count: 4)
+  post.remarks = "Unmarked"
+  post.save
+
+  10.times do
+    post.notes.create(content: Faker::Lorem.paragraph(sentence_count: 4))
+    Note.create(feedback: post, content: Faker::Lorem.paragraph(sentence_count: 4))
+  end
 end
+
