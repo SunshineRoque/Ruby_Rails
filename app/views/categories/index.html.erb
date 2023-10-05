@@ -1,0 +1,25 @@
+<div class="box">
+  <h1>Category</h1>
+  <div class="table-container">
+    <table>
+      <thead>
+      <tr>
+        <td>Category</td>
+        <td>Action</td>
+      </tr>
+      </thead>
+      <% @categories.each do |category| %>
+        <tr>
+          <td><%= category.name %></td>
+          <td class="button">
+            <%= link_to :edit, edit_category_path(category), class: 'btn btn-warning' %>
+            <%= button_to :delete, category_path(category), method: :delete, class: 'btn btn-warning' %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <%= link_to '+', new_category_path, class: 'btn btn-warning' %>
+  <%= link_to 'See Posts', posts_path, class: 'btn btn-warning' %>
+</div>
+

@@ -1,0 +1,5 @@
+<div class="box">
+  <h1>New category</h1>
+  <%= render partial: 'form', locals: { category: @category, path: categories_path } %>
+  <%= link_to 'Back to Posts', posts_path, class: 'btn btn-warning' %>
+</div>

@@ -39,6 +39,7 @@
           <td> Content</td>
           <td>Created at</td>
           <td>Updated at</td>
+          <td>Category</td>
           <td>Published</td>
           <td>Action</td>
         </tr>
@@ -49,6 +50,7 @@
             <td><%= post.content %></td>
             <td><%= post.created_at %></td>
             <td><%= post.updated_at %></td>
+            <td><%= post.categories.pluck(:name).join(',') %></td>
             <td><%= post.published %></td>
             <td class="button">
               <%= link_to 'Show', post_path(post), class: 'btn btn-primary' %>

@@ -1,0 +1,6 @@
+<div class="box">
+  <h1>category id: <%= @category.id %></h1>
+  <%= render partial: 'form', locals: { category: @category, path: category_path(@category) } %>
+  <%= link_to 'Category Lists', categories_path, class: 'btn btn-warning' %>
+  <%= link_to 'New Category', new_category_path, class: 'btn btn-warning' %>
+</div>

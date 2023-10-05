@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     resources :comments, except: :show
   end
 
+  resources :categories, except: :show
+
   resources :posts do
     member do
       post 'publish'
