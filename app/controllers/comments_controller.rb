@@ -1,10 +1,12 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!, except: :index
   before_action :set_post
   before_action :set_comment, only: [:edit, :update, :destroy]
+  before_action :validate_comment_owner, only: [:edit, :update, :destroy]
 
   def index
-    @comments = @post.comments
-    @comments = Comment.order(created_at: :desc)
+    @comments = @post.comments.includes(:user)
+    @comments = @comments.order(created_at: :desc)
     @comments = @comments.page(params[:page]).per(10)
   end
 
@@ -14,7 +16,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @post.comments.build(comment_params)
-
+    @comment.user = current_user
     if @comment.save
       flash[:notice] = 'Comment created successfully'
       redirect_to post_comments_path(@post)
@@ -43,6 +45,13 @@ class CommentsController < ApplicationController
   end
 
   private
+
+  def validate_comment_owner
+    unless @comment.user == current_user
+      flash[:notice] = 'the comment not belongs to you'
+      redirect_to post_comments_path(@post)
+    end
+  end
 
   def set_post
     @post = Post.find params[:post_id]

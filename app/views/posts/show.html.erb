@@ -4,5 +4,6 @@
     <li>Title: <%= @post.title %></li>
     <div></div>
     <li>Content: <%= @post.content %></li>
+    <li><%= @post.user&.email %></li>
   </ul>
 </div>

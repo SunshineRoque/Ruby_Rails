@@ -35,6 +35,7 @@
       <table>
         <thead>
         <tr>
+          <td>Author</td>
           <td>Title</td>
           <td> Content</td>
           <td>Created at</td>
@@ -46,6 +47,7 @@
         </thead>
         <% @posts.each do |post| %>
           <tr>
+            <td><%= post.user&.email %></td>
             <td><%= post.title %></td>
             <td><%= post.content %></td>
             <td><%= post.created_at %></td>
@@ -54,8 +56,10 @@
             <td><%= post.published %></td>
             <td class="button">
               <%= link_to 'Show', post_path(post), class: 'btn btn-primary' %>
-              <%= link_to 'Edit', edit_post_path(post), class: 'btn btn-warning' %>
-              <%= button_to 'Delete', post_path(post), method: :delete, class: 'btn btn-danger' %>
+              <% if user_signed_in? && post.user == current_user %>
+                <%= link_to 'Edit', edit_post_path(post), class: 'btn btn-warning' %>
+                <%= button_to 'Delete', post_path(post), method: :delete, class: 'btn btn-danger' %>
+              <% end %>
               <%= link_to 'Comments', post_comments_path(post), class: 'btn btn-warning' %>
               <%= link_to 'New Comment', new_post_comment_path(post), class: 'btn btn-warning' %>
             </td>
