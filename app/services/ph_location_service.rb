@@ -7,8 +7,8 @@ class PhLocationService
 
   def fetch_region
     request = RestClient.get("#{url}/regions/")
-    data = JSON.parse(request.body)
-    data.each do |region|
+    region_data = JSON.parse(request.body)
+    region_data.each do |region|
       address_region = Address::Region.find_or_initialize_by(code: region['code'])
       address_region.name = region['regionName']
       address_region.save
@@ -17,8 +17,8 @@ class PhLocationService
 
   def fetch_provinces
     request = RestClient.get("#{url}/provinces")
-    data = JSON.parse(request.body)
-    data.each do |province|
+    province_data = JSON.parse(request.body)
+    province_data.each do |province|
       region = Address::Region.find_by_code(province['regionCode'])
       address_province = Address::Province.find_or_initialize_by(code: province['code'])
       address_province.name = province['name']
@@ -29,13 +29,28 @@ class PhLocationService
 
   def fetch_districts
     request = RestClient.get("#{url}/districts/")
-    data = JSON.parse(request.body)
-    data.each do |district|
+    district_data = JSON.parse(request.body)
+    district_data .each do |district|
       region = Address::Region.find_by(code: district['regionCode'])
       address_district = Address::Province.find_or_initialize_by(code: district['code'])
       address_district.name = district['name']
       address_district.region = region
       address_district.save
+    end
+  end
+
+  def fetch_cities
+    request = RestClient.get("#{url}/cities-municipalities/")
+    municipality_data = JSON.parse(request.body)
+    municipality_data.each do |city|
+      address_city = Address::City.find_or_initialize_by(code: city['code'])
+      address_city.name = city['name']
+      address_city.province = if city['districtCode']
+                                Address::Province.find_by_code(city['districtCode'])
+                              elsif city['provinceCode']
+                                Address::Province.find_by_code(city['provinceCode'])
+                              end
+      address_city.save
     end
   end
 end
