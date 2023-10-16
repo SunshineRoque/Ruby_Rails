@@ -1,0 +1,5 @@
+<div class="box">
+  <h1>Cat Facts</h1>
+  <p><%= @cat_fact.fact if @cat_fact %></p>
+  <%= button_to 'Generate New Cat Fact', cat_facts_path, method: :post, class: 'btn btn-primary' %>
+</div>

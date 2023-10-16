@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'cat_facts/index'
+  get 'cat_facts/create'
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -27,4 +29,5 @@ Rails.application.routes.draw do
     resources :notes, except: :show
   end
 
+  resources :cat_facts, only: [:index, :create]
 end

@@ -374,6 +374,9 @@
           <%= link_to 'Posts', posts_path, class: "nav-link #{'active' if action_name == 'posts' }", 'aria-current': 'page' %>
         </li>
         <li>
+          <%= link_to 'Cat Facts', cat_facts_path, class: "nav-link #{'active' if action_name == 'posts' }", 'aria-current': 'page' %>
+        </li>
+        <li>
           <% if user_signed_in? %>
             <%= link_to 'Sign Out', destroy_user_session_path, data: { 'turbo-method': :delete }, class: "nav-link #{'active' if action_name == 'sign in' }", 'aria-current': 'page' %>
           <% else %>
