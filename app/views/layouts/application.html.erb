@@ -374,7 +374,7 @@
           <%= link_to 'Posts', posts_path, class: "nav-link #{'active' if action_name == 'posts' }", 'aria-current': 'page' %>
         </li>
         <li>
-          <%= link_to 'Cat Facts', cat_facts_path, class: "nav-link #{'active' if action_name == 'posts' }", 'aria-current': 'page' %>
+          <%= link_to 'Cat Facts', cat_facts_path, class: "nav-link #{'active' if action_name == 'posts' }", 'aria-current': 'page' if user_signed_in? %>
         </li>
         <li>
           <% if user_signed_in? %>

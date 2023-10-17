@@ -29,5 +29,5 @@ Rails.application.routes.draw do
     resources :notes, except: :show
   end
 
-  resources :cat_facts, only: [:index, :create]
+  resources :cat_facts, only: [:index, :create, :destroy]
 end

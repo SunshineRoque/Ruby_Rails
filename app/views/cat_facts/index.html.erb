@@ -1,5 +1,17 @@
 <div class="box">
   <h1>Cat Facts</h1>
-  <p><%= @cat_fact.fact if @cat_fact %></p>
+  <%= form_with url: cat_facts_path, method: :get do |form| %>
+    <div class="mb-3">
+      <%= form.label :Owned_by_me, class: 'form-label' %>
+      <%= form.check_box :Owned_by_me, checked: (params[:Owned_by_me] == '1'), class: 'form-check-input' %>
+    </div>
+    <%= form.submit 'Search', class: 'btn btn-sm btn-primary' %>
+  <% end %>
   <%= button_to 'Generate New Cat Fact', cat_facts_path, method: :post, class: 'btn btn-primary' %>
+  <% @cat_facts.each do |cat_fact| %>
+    <div><%= cat_fact.user&.email %></div>
+    <div><%= cat_fact.fact %></div>
+    <div><%= cat_fact.created_at %></div>
+    <div><%= button_to 'Delete', cat_fact_path(cat_fact), method: :delete, class: 'btn btn-danger' if user_signed_in? && cat_fact.user == current_user%></div>
+  <% end %>
 </div>
