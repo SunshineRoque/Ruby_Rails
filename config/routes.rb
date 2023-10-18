@@ -45,7 +45,10 @@ Rails.application.routes.draw do
         resources :barangays, only: :index
       end
 
-      resources :barangays, only: [:index, :show]
+      resources :barangays, only: [:index, :show] do
+      end
+
+      resources :posts, only: [:index, :show]
     end
   end
 end
