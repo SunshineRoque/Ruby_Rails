@@ -30,4 +30,22 @@ Rails.application.routes.draw do
   end
 
   resources :cat_facts, only: [:index, :create, :destroy]
+
+  namespace :api do
+    namespace :vi do
+      resources :regions, only: [:index, :show] do
+        resources :provinces, only: :index
+      end
+
+      resources :provinces, only: [:index, :show] do
+        resources :cities, only: :index
+      end
+
+      resources :cities, only: [:index, :show] do
+        resources :barangays, only: :index
+      end
+
+      resources :barangays, only: [:index, :show]
+    end
+  end
 end
