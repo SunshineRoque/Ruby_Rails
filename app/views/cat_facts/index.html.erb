@@ -1,17 +1,25 @@
 <div class="box">
   <h1>Cat Facts</h1>
   <%= form_with url: cat_facts_path, method: :get do |form| %>
-    <div class="mb-3">
+    <div class="mb-3-filter">
       <%= form.label :Owned_by_me, class: 'form-label' %>
       <%= form.check_box :Owned_by_me, checked: (params[:Owned_by_me] == '1'), class: 'form-check-input' %>
+      <%= form.submit 'Search', class: 'btn btn-sm btn-primary' %>
     </div>
-    <%= form.submit 'Search', class: 'btn btn-sm btn-primary' %>
   <% end %>
-  <%= button_to 'Generate New Cat Fact', cat_facts_path, method: :post, class: 'btn btn-primary' %>
-  <% @cat_facts.each do |cat_fact| %>
-    <div><%= cat_fact.user&.email %></div>
-    <div><%= cat_fact.fact %></div>
-    <div><%= cat_fact.created_at %></div>
-    <div><%= button_to 'Delete', cat_fact_path(cat_fact), method: :delete, class: 'btn btn-danger' if user_signed_in? && cat_fact.user == current_user%></div>
-  <% end %>
+  <div class="d-flex flex-row w-50" , style="margin-left: -80px">
+    <%= button_to 'New Cat Fact', cat_facts_path, method: :post, class: 'btn btn-primary-generate' %>
+  </div>
+  <div class="container-each">
+    <% @cat_facts.each do |cat_fact| %>
+      <div class="container-facts">
+        <div class="cat_fact-user"><%= cat_fact.user&.email %></div>
+        <div class="fact"><%= cat_fact.fact %></div>
+        <div class="margin-column">
+          <div><%= cat_fact.created_at %></div>
+          <div><%= button_to 'Delete', cat_fact_path(cat_fact), method: :delete, class: 'btn btn-danger' if user_signed_in? && cat_fact.user == current_user %></div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
