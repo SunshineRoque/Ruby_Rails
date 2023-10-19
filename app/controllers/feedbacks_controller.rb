@@ -3,8 +3,8 @@ class FeedbacksController < ApplicationController
 
   def index
     @feedbacks = Feedback.order(created_at: :desc)
-    @feedbacks = @feedbacks.where(name: params[:name]) if params[:name].present?
-    @feedbacks = @feedbacks.where(email: params[:email]) if params[:email].present?
+    # @feedbacks = @feedbacks.where(name: params[:name]) if params[:name].present?
+    # @feedbacks = @feedbacks.where(email: params[:email]) if params[:email].present?
     @feedbacks = @feedbacks.where(subjetc: params[:subjetc]) if params[:subjetc].present?
     @feedbacks = @feedbacks.where(message: params[:message]) if params[:message].present?
     if params[:start_date].present? && params[:end_date].present?
@@ -63,7 +63,8 @@ class FeedbacksController < ApplicationController
   end
 
   def feedback_params
-    params.require(:feedback).permit(:name, :email, :subjetc, :message, :remarks)
+    params.require(:feedback).permit(:subjetc, :message, :remarks)
+    # :name, :email,
   end
 end
 
