@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   resources :cat_facts, only: [:index, :create, :destroy]
 
   namespace :api do
+    resources :news, only: :index
     namespace :v1 do
       resources :regions, only: [:index, :show] do
         resources :provinces, only: :index
