@@ -1,10 +1,13 @@
 class FeedbacksController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_feedback, only: [:show, :edit, :update, :destroy]
 
   def index
-    @feedbacks = Feedback.order(created_at: :desc)
-    # @feedbacks = @feedbacks.where(name: params[:name]) if params[:name].present?
-    # @feedbacks = @feedbacks.where(email: params[:email]) if params[:email].present?
+    @feedbacks = Feedback.includes(:user).all.order(created_at: :desc)
+    if user_signed_in?
+      @feedbacks = @feedbacks.where(email: current_user.email) if current_user.email.present?
+      @feedbacks = @feedbacks.where(name: current_user.name) if current_user.name.present?
+    end
     @feedbacks = @feedbacks.where(subjetc: params[:subjetc]) if params[:subjetc].present?
     @feedbacks = @feedbacks.where(message: params[:message]) if params[:message].present?
     if params[:start_date].present? && params[:end_date].present?
@@ -22,7 +25,7 @@ class FeedbacksController < ApplicationController
 
   def create
     @feedback = Feedback.new(feedback_params)
-
+    @feedback.user = current_user
     if @feedback.save
       flash[:notice] = 'Feedback created successfully'
       redirect_to feedbacks_path
