@@ -1,14 +1,21 @@
+<style>
+
+</style>
 
 
 <div class="box">
   <h1>News API</h1>
+  <div>Your IP address is: <%= @user_ip %></div>
+  <div>Your IP info: <%= @user_ip_info['city'] %>, <%= @user_ip_info['country'] %> | <%= @user_ip_info['timezone'] %></div>
   <div class="container-all">
     <%= form_with url: api_news_index_path, method: :get, class: 'form' do |form| %>
-      <div class="mb-3">
-        <%= form.label :category, class: 'form-label' %>
-        <%= form.select :category, @categories, selected: params[:category], class: 'form-control' %>
+      <div class="column-category">
+        <div class="mb-3">
+          <%= form.label :category, class: 'form-label' %>
+          <%= form.select :category, @categories, selected: params[:category], class: 'form-control' %>
+        </div>
+        <%= form.submit 'Search', class: 'btn btn-sm btn-primary' %>
       </div>
-      <%= form.submit 'Search', class: 'btn btn-sm btn-primary' %>
     <% end %>
   </div>
 

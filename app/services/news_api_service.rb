@@ -2,7 +2,7 @@ class NewsApiService
   attr_reader :url, :api_key
 
   def initialize
-    @api_key = '42a6e108bb4548cc8d3179d86d554a49'
+    @api_key = 'a1cf85dab8f64dddbd3ab4e34bd68a2b'
     @url = 'https://newsapi.org/v2/top-headlines'
   end
 
