@@ -1,0 +1,48 @@
+<div class="box">
+  <div class="star">
+    <div class="column-random">
+      <div class="profile-image">
+        <%= image_tag @random_user['results'][0]['picture']['large'], alt: "ID Picture" %>
+      </div>
+      <h3 class="random-user">RANDOM USER</h3>
+    </div>
+    <h5>Name</h5>
+    <div class="random-name">
+      <div>
+        <%= label_tag :first_name %>
+        <%= text_field_tag :name, @random_user['results'][0]['name']['first'] %>
+      </div>
+      <div>
+        <%= label_tag :last_name %>
+        <%= text_field_tag :name, @random_user['results'][0]['name']['last'] %>
+      </div>
+    </div>
+    <h5>Address</h5>
+    <%= text_field_tag :name, "#{@random_user['results'][0]['location']['street']['number']}
+    #{@random_user['results'][0]['location']['street']['name']},
+    #{@random_user['results'][0]['location']['city']},
+    #{@random_user['results'][0]['location']['state']},
+    #{@random_user['results'][0]['location']['country']}
+    (#{@random_user['results'][0]['location']['postcode']})",
+                       class: 'address_field' %>
+    <h5>Email Address</h5>
+    <%= text_field_tag :name, @random_user['results'][0]['email'], class: 'address_field' %>
+    <div class="section">
+      <h5>Gender</h5>
+      <div class="radio-group">
+        <label for="male">Male</label>
+        <%= radio_button_tag :gender, 'male', @random_user['results'][0]['gender'] == 'male' %>
+        <label for="female">Female</label>
+        <%= radio_button_tag :gender, 'female', @random_user['results'][0]['gender'] == 'female' %>
+      </div>
+    </div>
+    <h5>Birthdate</h5>
+    <%= text_field_tag :name, @random_user['results'][0]['dob']['date'], class: 'address_field' %>
+    <h5>Age</h5>
+    <%= text_field_tag :name, @random_user['results'][0]['dob']['age'], class: 'address_field' %>
+    <h5>Phone Number</h5>
+    <%= text_field_tag :name, @random_user['results'][0]['phone'], class: 'address_field' %>
+    <h5>Cell Number</h5>
+    <%= text_field_tag :name, @random_user['results'][0]['cell'], class: 'address_field' %>
+  </div>
+</div>

@@ -1,12 +1,12 @@
-<style>
-
-</style>
-
-
 <div class="box">
   <h1>News API</h1>
-  <div>Your IP address is: <%= @user_ip %></div>
-  <div>Your IP info: <%= @user_ip_info['city'] %>, <%= @user_ip_info['country'] %> | <%= @user_ip_info['timezone'] %></div>
+  <div class="ipify"><h5>Your IP info:</h5>
+    <div><%= ' IP Adress: ' + @user_ip %></div>
+    <div><%= ' City: ' + @user_ip_info['city'] %></div>
+    <div><%= ' Region: ' + @user_ip_info['region'] %></div>
+    <div><%= ' Country: ' + @user_ip_info['country'] %></div>
+    <div><%= ' Postal: ' + @user_ip_info['postal'] %></div>
+  </div>
   <div class="container-all">
     <%= form_with url: api_news_index_path, method: :get, class: 'form' do |form| %>
       <div class="column-category">

@@ -33,6 +33,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :news, only: :index
+    resources :random_users, only: :index
     namespace :v1 do
       resources :regions, only: [:index, :show] do
         resources :provinces, only: :index
