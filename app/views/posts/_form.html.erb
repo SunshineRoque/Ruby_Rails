@@ -1,4 +1,4 @@
-<%= form_with model: post do |form| %>
+<%= form_with data: { controller: "location" }, model: post do |form| %>
   <% if post.errors.any? %>
     <ul class="error">
       <% post.errors.each do |error| %>
@@ -24,6 +24,43 @@
     <%= form.check_box :published %>
   </div>
 
+
+  <div class="mb-3">
+    <%= form.label :address_region_id %>
+    <%= form.collection_select :address_region_id,
+                               Address::Region.all, :id, :name,
+                               { prompt: 'Please select region' },
+                               class: 'form-control',
+                               data: { location_target: 'selectedRegionId', action: 'change->location#fetchProvinces' } %>
+  </div>
+  <div class="mb-3" data-action>
+    <%= form.label :address_province_id %>
+    <%= form.collection_select :address_province_id,
+                               [], nil, nil,
+                               { prompt: 'Please select province' }, class: 'form-control',
+                               data: { location_target: 'selectedProvinceId', action: 'change->location#fetchCities' } %>
+  </div>
+
+  <div class="mb-3" data-action>
+    <%= form.label :address_city_id %>
+    <%= form.collection_select :address_city_id,
+                               [], nil, nil,
+                               { prompt: 'Please select city' }, class: 'form-control',
+                               data: { location_target: 'selectedCityId', action: 'change->location#fetchBarangays' } %>
+  </div>
+
+  <div class="mb-3" data-action>
+    <%= form.label :address_barangay_id %>
+    <%= form.collection_select :address_barangay_id,
+                               [], nil, nil,
+                               { prompt: 'Please select barangay' }, class: 'form-control',
+                               data: { location_target: 'selectedBarangayId'}%>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :address %>
+    <%= form.text_field :address, class: 'form-control' %>
+  </div>
 
   <%= form.submit %>
 <% end %>

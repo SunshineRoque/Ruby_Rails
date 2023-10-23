@@ -1,10 +1,12 @@
 <div class="box">
   <h1 class="image"><%= image_tag "wave.png" %></h1>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias
-    illum, animi earum ea amet sequi reiciendis sit corporis sunt
-    iusto cupiditate odio maxime adipisci cumque eligendi nemo
-    dolore id itaque?</p>
+  <div data-controller="hello">
+    <input data-hello-target="name" type="text">
+    <button data-action="click->hello#greet">Greet</button>
+  </div>
 </div>
+
+
 
 
 

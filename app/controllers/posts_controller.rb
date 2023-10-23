@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :validate_post_owner, only: [:edit, :update, :destroy]
 
   def index
-    @posts = Post.includes(:categories, :user).all
+    @posts = Post.includes(:categories, :user, :comments).all
     @posts = Post.order(created_at: :desc)
     @posts = @posts.where(title: params[:title]) if params[:title].present?
     if params[:start_date].present? && params[:end_date].present?
@@ -72,7 +72,8 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :published)
+    params.require(:post).permit(:title, :content, :published, :image, :address, :address_region_id, :address_province_id,
+                                 :address_city_id, :address_barangay_id, category_ids: [])
   end
 
 end

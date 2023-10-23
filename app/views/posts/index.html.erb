@@ -43,12 +43,16 @@
           <td>Updated at</td>
           <td>Category</td>
           <td>Published</td>
+          <td>Address</td>
           <td>Action</td>
         </tr>
         </thead>
         <% @posts.each do |post| %>
           <tr>
-            <td><%= post.user&.email %></td>
+            <td data-controller="clipboard">
+              <span data-clipboard-target="email"><%= post.user&.email %></span>
+              <button data-clipboard-target="copyButton" data-action="click->clipboard#copy" class="notice btn btn-sm btn-dark">copy</button>
+            </td>
             <td><%= post.user&.name %></td>
             <td><%= post.title %></td>
             <td><%= post.content %></td>
@@ -56,6 +60,7 @@
             <td><%= post.updated_at %></td>
             <td><%= post.categories.pluck(:name).join(',') %></td>
             <td><%= post.published %></td>
+            <td><%= "#{post&.region&.name}, #{post&.province&.name}, #{post&.city&.name}, #{post&.barangay&.name}, #{post.address}" %></td>
             <td class="button">
               <%= link_to 'Show', post_path(post), class: 'btn btn-primary' %>
               <% if user_signed_in? && post.user == current_user %>
