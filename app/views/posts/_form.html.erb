@@ -20,8 +20,8 @@
   </div>
 
   <div class="field">
-    <%= form.label 'Published' %>
-    <%= form.check_box :published %>
+    <%= form.label 'Status' %>
+    <%= form.select :status, options_for_select(Post.statuses.keys.map { |status| [status.humanize, status] }) %>
   </div>
 
 

@@ -16,6 +16,10 @@ class PostsController < ApplicationController
       @posts = @posts.where(published: '1' == params[:published])
     end
 
+    if params[:status].present?
+      @posts = @posts.where(status: params[:status])
+    end
+
     @posts = @posts.page(params[:page]).per(10)
   end
 
