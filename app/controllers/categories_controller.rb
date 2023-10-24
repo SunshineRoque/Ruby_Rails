@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :check_user_admin
   before_action :set_category, only: [:edit, :update, :destroy]
 
   def index
@@ -45,4 +47,9 @@ class CategoriesController < ApplicationController
   def category_params
     params.require(:category).permit(:name)
   end
+
+  def check_user_admin
+    raise ActionController::RoutingError.new('Not Found') unless current_user.admin?
+  end
+
 end

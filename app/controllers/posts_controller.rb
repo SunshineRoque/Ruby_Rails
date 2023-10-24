@@ -68,7 +68,7 @@ class PostsController < ApplicationController
     if @post.update(status: new_status)
       flash[:notice] = 'Status changed successfully'
     else
-      flash[:alert] = 'Failed to change the genre'
+      flash[:alert] = 'Failed to change the status'
     end
 
     redirect_to posts_path

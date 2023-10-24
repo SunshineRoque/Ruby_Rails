@@ -53,4 +53,13 @@ Rails.application.routes.draw do
       resources :posts, only: [:index, :show]
     end
   end
+
+  namespace :admin, only: :index do
+    resources :users do
+      member do
+        patch 'change_genre'
+      end
+    end
+  end
+
 end
