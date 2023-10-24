@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   validates :content, presence: true
 
   has_many :comments
+  enum status: { published: 0, unpublished: 1, archived: 2}
   has_many :post_category_ships
   has_many :categories, through: :post_category_ships
   paginates_per 5

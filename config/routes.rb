@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   resources :posts do
     member do
-      post 'publish'
+      patch 'change_status'
     end
   end
 

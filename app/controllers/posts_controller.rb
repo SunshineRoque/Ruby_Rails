@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :change_status]
   before_action :validate_post_owner, only: [:edit, :update, :destroy]
 
   def index
@@ -58,6 +58,18 @@ class PostsController < ApplicationController
     redirect_to posts_path
   end
 
+  def change_status
+    new_status = params[:new_status].to_i
+
+    if @post.update(status: new_status)
+      flash[:notice] = 'Status changed successfully'
+    else
+      flash[:alert] = 'Failed to change the genre'
+    end
+
+    redirect_to posts_path
+  end
+
   private
 
   def validate_post_owner
@@ -72,7 +84,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :published, :image, :address, :address_region_id, :address_province_id,
+    params.require(:post).permit(:title, :content, :published,:status, :image, :address, :address_region_id, :address_province_id,
                                  :address_city_id, :address_barangay_id, category_ids: [])
   end
 

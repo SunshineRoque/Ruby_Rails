@@ -11,8 +11,8 @@ export default class extends Controller {
 
     greet() {
         console.log(this.nameTarget)
-        console.log("Hello, Stimulus", this.nameTarget.value)
-        alert(`Hello, Stimulus ${this.nameTarget.value}`)
+        console.log("Hello ", this.nameTarget.value)
+        alert(`Hello ${this.nameTarget.value}`)
         this.nameTarget.value = ""
     }
 }

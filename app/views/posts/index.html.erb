@@ -19,10 +19,10 @@
         <%= form.label :end_date, class: 'form-label' %>
         <%= form.date_field :end_date, value: params[:end_date], class: 'form-control' %>
       </div>
-      <div class="mb-3">
-        <%= form.label :published, class: 'form-label' %>
-        <%= form.check_box :published, value: params[:published], class: 'form-check-input' %>
-      </div>
+<!--      <div class="mb-3">-->
+        <%#= form.label :published, class: 'form-label' %>
+        <%#= form.check_box :published, value: params[:published], class: 'form-check-input' %>
+<!--      </div>-->
 
       <%= form.submit 'Search', class: 'btn btn-sm btn-primary' %>
     <% end %>
@@ -42,7 +42,7 @@
           <td>Created at</td>
           <td>Updated at</td>
           <td>Category</td>
-          <td>Published</td>
+          <td>Status</td>
           <td>Address</td>
           <td>Action</td>
         </tr>
@@ -59,7 +59,7 @@
             <td><%= post.created_at %></td>
             <td><%= post.updated_at %></td>
             <td><%= post.categories.pluck(:name).join(',') %></td>
-            <td><%= post.published %></td>
+            <td><%= post.status %></td>
             <td><%= "#{post&.region&.name}, #{post&.province&.name}, #{post&.city&.name}, #{post&.barangay&.name}, #{post.address}" %></td>
             <td class="button">
               <%= link_to 'Show', post_path(post), class: 'btn btn-primary' %>
@@ -69,6 +69,11 @@
               <% end %>
               <%= link_to 'Comments', post_comments_path(post), class: 'btn btn-warning' %>
               <%= link_to 'New Comment', new_post_comment_path(post), class: 'btn btn-warning' %>
+
+              <%= button_to 'Archived', change_status_post_path(post, new_status: 2), class: 'btn btn-sm btn-info', method: :patch %>
+              <%= button_to 'Unpublished', change_status_post_path(post, new_status: 1), class: 'btn btn-sm btn-info', method: :patch %>
+              <%= button_to 'Published', change_status_post_path(post, new_status: 0), class: 'btn btn-sm btn-info', method: :patch %>
+
             </td>
           </tr>
         <% end %>
