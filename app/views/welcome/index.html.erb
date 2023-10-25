@@ -1,8 +1,9 @@
 <div class="box">
   <h1 class="image"><%= image_tag "wave.png" %></h1>
+  <%= t( 'hello', name: current_user.email) if current_user %>
   <div data-controller="hello">
     <input data-hello-target="name" type="text">
-    <button data-action="click->hello#greet">Greet</button>
+    <button data-action="click->hello#greet"><%= t( 'greet')%></button>
   </div>
 </div>
 

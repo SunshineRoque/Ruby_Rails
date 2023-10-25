@@ -1,0 +1,28 @@
+zh-CN:
+  hello: "您好, %{name}"
+  post_list: 活動清單
+  greet: 迎接
+  add_new_post: 添加新帖子
+  title: 标题
+  start_date: 开始日期
+  end_date: 结束日期
+  status: 地位
+  select_status: 选择状态
+  search: 搜索
+  copy: 复制
+  show: 展示
+  comments: 评论
+  new_comment: 新评论
+  archived: 存档
+  unpublished: 未发表
+  published: 已发表
+  home: 家
+  about: 关于
+  contact: 接触
+  posts: 帖子
+  cat_facts: 猫的事实
+  english: 英语
+  tagalog: 菲律宾人
+  mandarin: 普通话
+  sign_in: 登入
+  sign_out: 登出

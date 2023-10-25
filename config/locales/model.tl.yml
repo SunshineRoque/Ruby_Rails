@@ -1,0 +1,18 @@
+tl:
+  activerecord:
+    models:
+      post:
+        one: Post
+        other: Mga post
+    attributes:
+      post:
+        author: May-akda
+        name: Pangalan
+        title: Pamagat
+        content: Nilalaman
+        created_at: Nilikha sa
+        updated_at: Na-update sa
+        category: Kategorya
+        status: Katayuan
+        address: Tirahan
+        action: Aksyon

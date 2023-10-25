@@ -1,0 +1,18 @@
+en:
+  activerecord:
+    models:
+      post:
+        one: Post
+        other: Posts
+    attributes:
+      post:
+        author: Author
+        name: Name
+        title: Title
+        content: Content
+        created_at: Created at
+        updated_at: Updated at
+        category: Category
+        status: Status
+        address: Address
+        action: Action

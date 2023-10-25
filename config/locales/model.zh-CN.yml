@@ -1,0 +1,18 @@
+zh-CN:
+  activerecord:
+    models:
+      post:
+        one: 文章
+        other: 多篇文章
+    attributes:
+      post:
+        author: 作者
+        name: 姓名
+        title: 標題
+        content: 內容
+        created_at: 创建于
+        updated_at: 更新于
+        category: 类别
+        status: 地位
+        address: 地址
+        action: 行动

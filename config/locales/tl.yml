@@ -1,0 +1,27 @@
+tl:
+  hello: "Kumusta, %{name}"
+  post_list: Listahan ng Post
+  add_new_post: Magdagdag ng Bagong Post
+  title: Pamagat
+  start_date: Petsa ng Pagsisimula
+  end_date: Petsa ng Pagtatapos
+  status: Katayuan
+  select_status: Piliin ang Katayuan
+  search: Maghanap
+  copy: Kopya
+  show: Ipakita
+  comments: Mga komento
+  new_comment: Bagong Komento
+  archived: Naka-archive
+  unpublished: Hindi na-publish
+  published: Inilathala
+  home: Bahay
+  about: Tungkol sa
+  contact: Makipag-ugnayan
+  posts: Mga post
+  cat_facts: Mga Katotohanan ng Pusa
+  english: Ingles
+  tagalog: Tagalog
+  mandarin: Mandarin
+  sign_in: Mag-sign In
+  sign_out: Mag-sign Out

@@ -30,4 +30,29 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  hello: "Hello, %{name}"
+  post_list: Post List
+  add_new_post: Add New Post
+  title: Title
+  start_date: Start Date
+  end_date: End Date
+  status: Status
+  select_status: Select Status
+  search: Search
+  copy: Copy
+  show: Show
+  comments: Comments
+  new_comment: New  Comment
+  archived: Archived
+  unpublished: Unpublished
+  published: Published
+  home: Home
+  about: About
+  contact: Contact
+  posts: Posts
+  cat_facts: Cat Facts
+  english: English
+  tagalog: Tagalog
+  mandarin: Mandarin
+  sign_in: Sign In
+  sign_out: Sign Out
