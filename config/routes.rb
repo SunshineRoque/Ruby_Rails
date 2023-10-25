@@ -9,21 +9,16 @@ Rails.application.routes.draw do
   get :about, to: 'welcome#about'
   get :contact, to: 'welcome#contact'
 
-  resources :posts do
-    resources :comments, except: :show
-  end
-
-  resources :categories, except: :show
-
-  resources :posts do
-    member do
-      patch 'change_status'
+  constraints(ClientDomainConstraint.new) do
+    resources :posts do
+      resources :comments, except: :show
+      member do
+        patch 'change_status'
+      end
     end
   end
 
-  resources :posts, only: [:index]
-
-  resources :feedbacks
+  resources :categories, except: :show
 
   resources :feedbacks do
     resources :notes, except: :show
@@ -53,11 +48,12 @@ Rails.application.routes.draw do
       resources :posts, only: [:index, :show]
     end
   end
-
-  namespace :admin, only: :index do
-    resources :users do
-      member do
-        patch 'change_genre'
+  constraints(AdminDomainConstraint.new) do
+    namespace :admin, only: :index do
+      resources :users do
+        member do
+          patch 'change_genre'
+        end
       end
     end
   end

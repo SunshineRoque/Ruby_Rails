@@ -13,7 +13,7 @@
         <%= form.text_field :email, value: params[:email], class: 'form-control' %>
       </div>
       <div class="mb-3">
-        <%= form.label :subjetc, class: 'form-label' %>
+        <%= form.label :subject, class: 'form-label' %>
         <%= form.text_field :subjetc, value: params[:subjetc], class: 'form-control' %>
       </div>
       <div class="mb-3">
@@ -67,8 +67,8 @@
         </thead>
         <% @feedbacks.each do |post| %>
           <tr>
-            <td><%= post.name %></td>
-            <td><%= post.email %></td>
+            <td><%= post.user&.name %></td>
+            <td><%= post.user&.email %></td>
             <td><%= post.subjetc %></td>
             <td><%= post.message %></td>
             <td><%= post.remarks %></td>

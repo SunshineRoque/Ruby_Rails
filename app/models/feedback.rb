@@ -3,7 +3,7 @@ class Feedback < ApplicationRecord
   validates :message, presence: true
   validates :remarks, presence: true
 
-  enum :remarks, {
+  enum remarks: {
     Good: 1,
     Bad: 3,
     Neutral: 2,

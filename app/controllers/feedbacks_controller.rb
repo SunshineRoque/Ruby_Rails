@@ -4,10 +4,8 @@ class FeedbacksController < ApplicationController
 
   def index
     @feedbacks = Feedback.includes(:user).all.order(created_at: :desc)
-    if user_signed_in?
-      @feedbacks = @feedbacks.where(email: current_user.email) if current_user.email.present?
-      @feedbacks = @feedbacks.where(name: current_user.name) if current_user.name.present?
-    end
+      @feedbacks = @feedbacks.where(user: {email: params[:email]}) if params[:email].present?
+      @feedbacks = @feedbacks.where(user: {name: params[:name]}) if params[:name].present?
     @feedbacks = @feedbacks.where(subjetc: params[:subjetc]) if params[:subjetc].present?
     @feedbacks = @feedbacks.where(message: params[:message]) if params[:message].present?
     if params[:start_date].present? && params[:end_date].present?
