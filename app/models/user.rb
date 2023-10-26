@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :posts
   has_many :feedbacks
   has_many :comments
+  has_many :activities
+  has_many :tasks
   enum genre: { client: 0, admin: 1 }
   has_many :cat_facts
   validates :name, presence: true

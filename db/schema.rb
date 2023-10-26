@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_24_072126) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_26_060154) do
+  create_table "activities", charset: "utf8mb4", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id"
+    t.string "state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_activities_on_user_id"
+  end
+
   create_table "address_barangays", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "city_id"
     t.string "code"
@@ -114,6 +123,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_24_072126) do
     t.index ["address_province_id"], name: "index_posts_on_address_province_id"
     t.index ["address_region_id"], name: "index_posts_on_address_region_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "tasks", charset: "utf8mb4", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id"
+    t.string "state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
   create_table "users", charset: "utf8mb4", force: :cascade do |t|

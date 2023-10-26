@@ -56,6 +56,7 @@ gem 'faker'
 gem 'devise'
 gem 'rest-client'
 gem 'active_model_serializers'
+gem 'aasm'
 gem 'stimulus-rails'
 
 group :development, :test do
