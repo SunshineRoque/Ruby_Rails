@@ -72,8 +72,8 @@
             <td><%= post.subjetc %></td>
             <td><%= post.message %></td>
             <td><%= post.remarks %></td>
-            <td><%= post.created_at %></td>
-            <td><%= post.updated_at %></td>
+            <td><%= post.created_at.strftime("%m/%d/%Y -  %I:%M %p") %></td>
+            <td><%= post.updated_at.strftime("%m/%d/%Y -  %I:%M %p") %></td>
             <td class="button">
               <%= link_to 'Show', feedback_path(post), class: 'btn btn-primary' %>
               <%= link_to 'Edit', edit_feedback_path(post), class: 'btn btn-warning' %>
